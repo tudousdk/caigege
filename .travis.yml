@@ -1,11 +1,11 @@
 language: node_js
+sudo: required
 node_js:
-    - 10
-cache: yarn
-install:
-    - yarn
-script:
-    - yarn build
+  - "node"
+branch: master
+cache:
+  directories:
+    - node_modules
 after_success:
     - npm run build
     - cd docs/.vuepress/dist

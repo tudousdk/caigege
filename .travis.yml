@@ -6,7 +6,7 @@ branch: master
 cache:
   directories:
     - node_modules
-after_success:
+script:
     - npm run build
     - cd docs/.vuepress/dist
     - git init

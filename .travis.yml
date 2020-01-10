@@ -1,8 +1,14 @@
 language: node_js
 node_js:
-  - "7"
-  - "6"
-  - "5"
-  - "4"
-
-script: echo "Running tests against $(node -v) ..."
+    - 10
+cache: yarn
+install:
+    - yarn
+script:
+    - yarn build
+after_success:
+    - cd docs/.vuepress/dist
+    - git init
+    - git add -A
+    - git commit -m 'deploy'
+    - git push -f https://${access_token}@github.com/tudousdk/tudousdk.github.io.git master
